@@ -44,3 +44,10 @@ print(df.describe())
 # Remove rows with a quantity of 9,999 because this is a placeholder, not a real sale
 df = df[df["quantity_sold"] != 9999]
 print("Shape after removing placeholder quantities:", df.shape)
+
+print("---Exercise 7---")
+df.to_csv("data/clean_sales.csv", index=False)
+df = pd.read_csv("data/clean_sales.csv")
+print(df.info())
+df = pd.read_csv("data/clean_sales.csv", parse_dates=["order_date"])
+print(df.info())
