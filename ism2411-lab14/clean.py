@@ -16,9 +16,9 @@ import pandas as pd
 df = pd.read_csv("data/messy_sales.csv")
 print(df.info())
 print(df.isnull().sum())
-# Column Order ID has 31 missing values out of 4,800 rows
-# Column Unit Price is stored as a string but should be a float
-# Column Customer ID has 362 missing values out of 4,800 rows
+# Column Order ID has 0.65% missing values.
+# Column Unit Price is dtype object but should be float because it contains prices.
+# Column Customer ID has 7.54% missing values.
 
 print("---Exercise 2---")
 df.columns = df.columns.str.lower().str.replace(" ", "_")
@@ -52,8 +52,8 @@ print("Shape after removing duplicates:", df.shape)
 
 print("---Exercise 6---")
 print(df.describe())
-# The negative revenue could represent customer returns
-# The maximum revenue of 59,994 is much higher than the median of 145.49, possibly because of a large order. 
+# The negative revenue could represent customer returns, so I am keeping these rows
+# The maximum revenue of 59,994 is much higher than the median of 145.49, possibly because of a large order
 # Remove rows with a quantity of 9,999 because this is a placeholder, not a real sale
 df = df[df["quantity_sold"] != 9999]
 print("Shape after removing placeholder quantities:", df.shape)
