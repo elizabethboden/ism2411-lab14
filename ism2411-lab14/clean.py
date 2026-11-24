@@ -31,3 +31,16 @@ df["unit_price"] = df["unit_price"].astype(float)
 df["quantity_sold"] = df["quantity_sold"].astype(int)
 df["revenue"] = (df["unit_price"] * df["quantity_sold"]).round(2)
 print(df.dtypes) 
+
+print("---Exercise 5---")
+print("Number of duplicates:", df.duplicated().sum())
+df = df.drop_duplicates()
+print("Shape after removing duplicates:", df.shape)
+
+print("---Exercise 6---")
+print(df.describe())
+# The negative revenue could represent customer returns
+# The maximum revenue of 59,994 is much higher than the median of 145.49, possibly because of a large order. 
+# Remove rows with a quantity of 9,999 because this is a placeholder, not a real sale
+df = df[df["quantity_sold"] != 9999]
+print("Shape after removing placeholder quantities:", df.shape)
