@@ -1,11 +1,24 @@
+# 1. I think filling in missing values is the hardest decision because the 
+# average might not always be close to what the actual value was. I would
+# want to know why the information was missing before deciding if using the 
+# average was the best choice.
+# 2. I think my comments explain why I made each decision. I dropped rows that
+# were missing order IDs or dates because they are important for identifying and 
+# tracking sales. I filled missing quantities with the average to avoid losing 
+# entire sales records. I also removed duplicate rows and the 9,999 quantity because
+# they did not represent valid sales records. 
+# 3. I was surprised by how high the maximum revenue was compared to the median.
+# The maximum was 59,994, while the median was only 145.49. I didn't expect there
+# to be such a big difference between the two. 
+
 print("---Exercise 1---")
 import pandas as pd
 df = pd.read_csv("data/messy_sales.csv")
 print(df.info())
 print(df.isnull().sum())
-# Column Order ID has 31 missing values 
+# Column Order ID has 31 missing values out of 4,800 rows
 # Column Unit Price is stored as a string but should be a float
-# Column Customer ID has 362 missing values
+# Column Customer ID has 362 missing values out of 4,800 rows
 
 print("---Exercise 2---")
 df.columns = df.columns.str.lower().str.replace(" ", "_")
